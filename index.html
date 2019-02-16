@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Mobility Survey</title>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body bgcolor="#FFFFFF" text="#000000">
+   <form action="survey.cgi" method="POST">
+Please enter your name:
+  <input type="text" id="UserName" size=20 maxlength=50 value="">
+  <p>Where is your starting point?:
+  <input type="text" id="StartingPoint" size=10 maxlength=50 value=""></p>
+
+<input type="hidden" id="ArrivalPointNA" size=20 maxlength=50 value="Napoli Centrale, Piazza Giuseppe Garibaldi, Napoli, NA">
+<input type="hidden" id="ArrivalPointAF" size=20 maxlength=50 value="Stazione Napoli - Afragola, Afragola, NA">
+<input type="hidden" id="ArrivalPointSA" size=20 maxlength=50 value="Salerno Stazione, Salerno, SA">
+
+  <p>How much are you far from NAPOLI CENTRALE?:
+<input type="text" id="DistanceNA" size=10 maxlength=50 value="">
+How much are you far from AFRAGOLA?:
+<input type="text" id="DistanceAF" size=10 maxlength=50 value="">
+How much are you far from SALERNO?:
+<input type="text" id="DistanceSA" size=10 maxlength=50 value=""></p>
+<p>
+<input type="text" id="TimeNA" size=20 maxlength=50 value="">
+<input type="text" id="TimeAF" size=20 maxlength=50 value="">
+<input type="text" id="TimeSA" size=20 maxlength=50 value=""></p>
+
+<script>
+function generateURL(){
+var startPoint = escape(document.getElementById('StartingPoint').value); //encoda la stringa trasformandola in un valore utilizzabile in un link
+var ArrivalNA = escape(document.getElementById('ArrivalPointNA').value);
+var ArrivalAF = escape(document.getElementById('ArrivalPointAF').value);
+var ArrivalSA = escape(document.getElementById('ArrivalPointSA').value);
+
+axios.get('https://maps.googleapis.com/maps/api/distancematrix/json?origins=' +
+        startPoint + '&destinations=' + ArrivalNA + '&departure_time=now&key=AIzaSyAWosGmn8c7dWRi6d5JDiRq8_ZaU-S3Xe4',{
+            crossdomain: true,
+            headers: {
+                "Access-Control-Allow-Origin": "*"
+            }
+        })
+        .then(function(response) {
+          var dist = response.data.rows[0].elements[0].distance.text; //prendo il primo elemento e seleziono tra le varie caratt. la duration
+          var dur = response.data.rows[0].elements[0].duration.text;
+          document.getElementById('DistanceNA').value= dist;
+          document.getElementById('TimeNA').value= dur;
+          console.log(response)
+        })
+  }
+</script>
+<p>
+<button type='button' onclick="generateURL()">Calculate Distances</button></p>
+   </form>
+</body>
+</html>
