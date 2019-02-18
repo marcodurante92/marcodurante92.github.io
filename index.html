@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<hmtl>
+
+    <head>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link rel="stylesheet" media="(max-width: 640px)" href="max-640px.css">
+        <link rel="stylesheet" media="(min-width: 640px)" href="min-640px.css">
+        <link rel="stylesheet" media="(orientation: portrait)" href="portrait.css">
+        <link rel="stylesheet" media="(orientation: landscape)" href="landscape.css">
+
+        <style>
+            .container {
+            border-radius: 5px;
+            background-color: #d0d0d0;
+            padding: 10px;
+            width:70%;
+            }
+
+            input[type=text] {
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+
+            body {
+                font-family: 'Lato', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <form id="survey-form" onsubmit="event.preventDefault(); return submitSurvey()">
+                <fieldset>
+                    <legend>Mobility Survey</legend>
+                    <p>
+                        Gender: <INPUT TYPE="RADIO" NAME="gender" VALUE="M" required>Male
+                        <INPUT TYPE="RADIO" NAME="gender" VALUE="F" required>Female
+                    </p>
+                    <p>
+                        Age: <INPUT TYPE="RADIO" NAME="age-range" VALUE="min-18" required><18
+                        <INPUT TYPE="RADIO" NAME="age-range" VALUE="18-30" required>18-30
+                        <INPUT TYPE="RADIO" NAME="age-range" VALUE="31+" required>31+
+                    </p>
+                    <p>
+                        Nationality: <SELECT NAME="nation" id="nation-id">
+                            <OPTION SELECTED VALUE=""> -
+                            <OPTION VALUE="Ita">Italian Citizen
+                            <OPTION VALUE="EU">European Citizen
+                            <OPTION VALUE="NON_EU">NON-European Citizen
+                        </SELECT></p>
+                        <p><button type="button" onclick="ifItalian()">Next</button></p>
+                        <p id="Regione" style="display: none">Di che Regione?:<input type=text style="display: none" id="It-id"></p>
+                        <p id="Stato" style="display: none">Di che Stato?:<input type=text style="display: none" id="Eu-id"></p>
+                        <p id="Continente" style="display: none">Di che Continente?:<input type=text style="display: none" id="Non_eu-id"></p>
+                        <p>
+                            Number of family members: <SELECT NAME="family-members">
+                                <OPTION SELECTED VALUE=""> -
+                                <OPTION VALUE="1">1
+                                <OPTION VALUE="2">2
+                                <OPTION VALUE="3">3
+                                <OPTION VALUE="4">4
+                                <OPTION VALUE="5+">5 or +
+                            </SELECT>
+                            of which <SELECT NAME="members-with-licence">
+                                <OPTION SELECTED VALUE=""> -
+                                <OPTION VALUE="1">1
+                                <OPTION VALUE="2">2
+                                <OPTION VALUE="3">3
+                                <OPTION VALUE="4">4
+                                <OPTION VALUE="5+">5 or +
+                            </SELECT> with driving licence.
+                          </p>
+                          <p>Number of vehicles owned by the family: <SELECT NAME="members-licence">
+                              <OPTION SELECTED VALUE=""> -
+                              <OPTION VALUE="1">1
+                              <OPTION VALUE="2">2
+                              <OPTION VALUE="3">3
+                              <OPTION VALUE="4+">4 or +
+                          </SELECT></p>
+                    <p>
+                        Highest degree attained: <SELECT NAME="educ">
+                            <OPTION SELECTED VALUE=""> -
+                            <OPTION VALUE="Diploma">H.S. diploma (or equiv.)
+                            <OPTION VALUE="Bachelor">Bachelor's degree
+                            <OPTION VALUE="Master">Master's degree
+                            <OPTION VALUE="Doctoral">Doctoral degree
+                        </SELECT></p>
+
+                    <label for="departure-input">Departure</label>
+                    <input name="departure" type="text" id="departure-input" value="" required />
+                    <button type="button" onclick="checkDistances()">Check Distances</button>
+
+                    <div id="departure-list"></div>
+
+                    <hr>
+
+                    <H3>The following series of questions ask about your "BLABLA". Select the answer that is true most of the time.</H3>
+
+                    <P>
+                        <TABLE BORDER>
+
+                            <TR ALIGN=CENTER>
+                                <TD WIDTH=75> </TD>
+                                <TD WIDTH=75><B><font color="22CB00">Strongly<br>agree</font></B></TD>
+                                <TD WIDTH=75><B><font color="green">Agree</B></TD>
+                                <TD WIDTH=75><B>Neither<br>agree<br>nor<br>disagree</font></B></TD>
+                                <TD WIDTH=75><B><font color="FF3A00">Disagree</font></B></TD>
+                                <TD WIDTH=75><B><font color="red">Strongly<br>disagree</font></B></TD>
+                            </TR>
+
+                            <TR ALIGN=CENTER>
+                                <TD ALIGN=LEFT>
+                                    The work is very stimulating.</TD>
+                                <TD><INPUT TYPE="RADIO" NAME="stimulat" VALUE="1"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="stimulat" VALUE="2"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="stimulat" VALUE="3"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="stimulat" VALUE="4"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="stimulat" VALUE="5"></TD>
+                            </TR>
+
+                            <TR ALIGN=CENTER>
+                                <TD ALIGN=LEFT>
+                                    I have a lot of freedom at work.</TD>
+                                <TD><INPUT TYPE="RADIO" NAME="freedom" VALUE="1"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="freedom" VALUE="2"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="freedom" VALUE="3"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="freedom" VALUE="4"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="freedom" VALUE="5"></TD>
+                            </TR>
+
+                            <TR ALIGN=CENTER>
+                                <TD ALIGN=LEFT>
+                                    My supervisor is very demanding of high quality.</TD>
+                                <TD><INPUT TYPE="RADIO" NAME="demand" VALUE="1"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="demand" VALUE="2"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="demand" VALUE="3"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="demand" VALUE="4"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="demand" VALUE="5"></TD>
+                            </TR>
+
+                            <TR ALIGN=CENTER>
+                                <TD ALIGN=LEFT>
+                                    The work environment is conducive to creative thinking.</TD>
+                                <TD><INPUT TYPE="RADIO" NAME="creative" VALUE="1"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="creative" VALUE="2"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="creative" VALUE="3"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="creative" VALUE="4"></TD>
+                                <TD><INPUT TYPE="RADIO" NAME="creative" VALUE="5"></TD>
+                            </TR>
+
+                        </TABLE>
+
+                        <p>
+                            <button type="submit" style="display: none" id="form-btn">Invia</button></p>
+                            <p align=right><legend><i><font size="1">Marco Durante</font></i></legend></p>
+                </fieldset>
+
+            </form>
+
+        </div>
+
+        <script>
+            var distances = null;
+
+            function checkDistances() {
+                var departure = $("#departure-input").val(); //recupera l'elemento con id (#) uguale a 'departure-input'
+
+                //Crea la chiamata ajax al server per recuperare la lista di distanze
+                $.post('https://marcos-survey-pr-1550269884833.firebaseapp.com/api', {
+                        from: departure
+                    })
+                    .then(function (response) {
+                        distances = response.distances;
+                        console.log(distances);
+                        var list = "";
+                        $.each(distances, function (i, element) {
+                            list = list + "<li>To <b>" + element.destination + "</b> (distance: " + element
+                                .distance.text + " - duration: " + element.duration.text + ")</li>"
+                        })
+                        $("#departure-list").css("display", "none");
+                        $("#departure-list").append("<ul>" +
+                            list +
+                            "</ul>");
+                        $("#form-btn").css("display", "block");
+                    })
+            }
+
+            function submitSurvey() {
+                var elements = $("#survey-form").serializeArray();
+                var json = {};
+
+                $.each(elements, function (i, input) {
+                    json[input.name] = input.value;
+                });
+                console.log(json);
+                var data = Object.assign({
+                    distances: distances
+                }, json);
+                console.log(data);
+
+                $.post('https://marcos-survey-pr-1550269884833.firebaseapp.com/api/confirmSurvey',
+                        data)
+                    .then(response => {
+                        alert(response.message);
+                    })
+                return false;
+            }
+
+          function ifItalian(){
+            var nationality = $("#nation-id").val();
+            console.log(nationality)
+            if (nationality == "Ita"){
+              $("#Regione").css("display", "none");
+              $("#Stato").css("display", "none");
+              $("#Continente").css("display", "none");
+              $("#It-id").css("display", "none");
+              $("#Eu-id").css("display", "none");
+              $("#Non_eu-id").css("display", "none");
+              $("#Regione").css("display", "block");
+              $("#It-id").css("display", "block");
+            }else if (nationality == "EU"){
+              $("#Regione").css("display", "none");
+              $("#Stato").css("display", "none");
+              $("#Continente").css("display", "none");
+              $("#It-id").css("display", "none");
+              $("#Eu-id").css("display", "none");
+              $("#Non_eu-id").css("display", "none");
+              $("#Stato").css("display", "block");
+              $("#Eu-id").css("display", "block");
+          }else {
+            $("#Regione").css("display", "none");
+            $("#Stato").css("display", "none");
+            $("#Continente").css("display", "none");
+            $("#It-id").css("display", "none");
+            $("#Eu-id").css("display", "none");
+            $("#Non_eu-id").css("display", "none");
+            $("#Continente").css("display", "block");
+            $("#Non_eu-id").css("display", "block");
+          }
+        }
+        </script>
+    </body>
+</hmtl>
