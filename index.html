@@ -280,7 +280,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col">
+                                        <div class="form-group col-xs-12">
                                             <legend class="col-form-label pt-0">STAZIONE NAPOLI
                                                 CENTRALE</legend>
                                             <div class="form-check">
@@ -297,12 +297,51 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="station-1-div" style="display: none" class="form-group col">
-                                            <label for="annualmoves-input">Perchè no?</label>
-                                            <select onchange="handleChangeSelection(this)" id="station1-reason-input"
+                                        <div id="station-1-div" style="display: none" class="form-group col-xs-12">
+                                            <label>Perchè no?</label>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[0][reason][]" class="form-check-input"
+                                                    type="checkbox" value="0">
+                                                <label class="form-check-label">Non c'ho mai
+                                                    pensato</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[0][reason][]" class="form-check-input"
+                                                    type="checkbox" value="1">
+                                                <label class="form-check-label" >E' troppo lontana</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[0][reason][]" class="form-check-input"
+                                                    type="checkbox" value="2">
+                                                <label class="form-check-label" >E' mal collegata con
+                                                    i mezzi pubblici</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[0][reason][]" class="form-check-input"
+                                                    type="checkbox" value="3">
+                                                <label class="form-check-label" >E' poco sicura</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[0][reason][]" class="form-check-input"
+                                                    type="checkbox" value="4">
+                                                <label class="form-check-label" >Ha pochi servizi
+                                                    commerciali e di ristorazione</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[0][reason][]" class="form-check-input"
+                                                    type="checkbox" value="5">
+                                                <label class="form-check-label" >E' difficile/costoso
+                                                    parcheggiare</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input id="station1-other-choice"  onclick="handleClickCheckbox(this)" name="stations[0][reason][]" class="form-check-input"
+                                                    type="checkbox" value="6">
+                                                <label class="form-check-label" >Altro</label>
+                                            </div>
+                                            <!-- <select onchange="handleChangeSelection(this)" id="station1-reason-input"
                                                 name="stations[0][reason]" class="form-control form-control-sm">
                                                 <option selected value=""></option>
-                                                <option value="never thought">Non c'ho mai
+                                                <input value="never thought">Non c'ho mai
                                                     pensato</option>
                                                 <option value="too far">E' troppo lontana</option>
                                                 <option value="badly connected">E' mal collegata con
@@ -313,7 +352,7 @@
                                                 <option value="expensive parking">E' difficile/costoso
                                                     parcheggiare</option>
                                                 <option value="other">Altro</option>
-                                            </select>
+                                            </select> -->
 
                                         </div>
                                     </div>
@@ -325,7 +364,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col">
+                                        <div class="form-group col-xs-12">
                                             <legend class="col-form-label pt-0">STAZIONE AFRAGOLA</legend>
                                             <div class="form-check">
                                                 <input type="hidden" name="stations[1][name]" value="STAZIONE AFRAGOLA">
@@ -341,9 +380,48 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="display:none" id="station-2-div" class="form-group col">
-                                            <label for="annualmoves-input">Perchè no?</label>
-                                            <select onchange="handleChangeSelection(this)" id="station2-reason-input"
+                                        <div style="display:none" id="station-2-div" class="form-group col-xs-12">
+                                            <label>Perchè no?</label>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[1][reason][]" class="form-check-input"
+                                                    type="checkbox" value="0">
+                                                <label class="form-check-label">Non c'ho mai
+                                                    pensato</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[1][reason][]" class="form-check-input"
+                                                    type="checkbox" value="1">
+                                                <label class="form-check-label" >E' troppo lontana</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[1][reason][]" class="form-check-input"
+                                                    type="checkbox" value="2">
+                                                <label class="form-check-label" >E' mal collegata con
+                                                    i mezzi pubblici</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[1][reason][]" class="form-check-input"
+                                                    type="checkbox" value="3">
+                                                <label class="form-check-label" >E' poco sicura</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[1][reason][]" class="form-check-input"
+                                                    type="checkbox" value="4">
+                                                <label class="form-check-label" >Ha pochi servizi
+                                                    commerciali e di ristorazione</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[1][reason][]" class="form-check-input"
+                                                    type="checkbox" value="5">
+                                                <label class="form-check-label" >E' difficile/costoso
+                                                    parcheggiare</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input id="station2-other-choice" name="stations[1][reason][]" onclick="handleClickCheckbox(this)" class="form-check-input"
+                                                    type="checkbox" value="6">
+                                                <label class="form-check-label" >Altro</label>
+                                            </div>
+                                            <!-- <select onchange="handleChangeSelection(this)" id="station2-reason-input"
                                                 name="stations[1][reason]" class="form-control form-control-sm">
                                                 <option selected value=""></option>
                                                 <option value="never thought">Non c'ho mai
@@ -357,7 +435,7 @@
                                                 <option value="expensive parking">E' difficile/costoso
                                                     parcheggiare</option>
                                                 <option value="other">Altro</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                     </div>
                                     <div class="row" style="display: none" id="station-2-hidden">
@@ -367,7 +445,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="form-group col">
+                                        <div class="form-group col-xs-12">
                                             <legend class="col-form-label pt-0">STAZIONE SALERNO</legend>
                                             <div class="form-check">
                                                 <input type="hidden" name="stations[2][name]" value="STAZIONE SALERNO">
@@ -383,9 +461,49 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div style="display:none" id="station-3-div" class="form-group col">
+                                        <div style="display:none" id="station-3-div" class="form-group col-xs-12">
                                             <label for="annualmoves-input">Perchè no?</label>
-                                            <select onchange="handleChangeSelection(this)" id="station3-reason-input"
+                                            <label>Perchè no?</label>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[2][reason][]" class="form-check-input"
+                                                    type="checkbox" value="0">
+                                                <label class="form-check-label">Non c'ho mai
+                                                    pensato</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[2][reason][]" class="form-check-input"
+                                                    type="checkbox" value="1">
+                                                <label class="form-check-label" >E' troppo lontana</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[2][reason][]" class="form-check-input"
+                                                    type="checkbox" value="2">
+                                                <label class="form-check-label" >E' mal collegata con
+                                                    i mezzi pubblici</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[2][reason][]" class="form-check-input"
+                                                    type="checkbox" value="3">
+                                                <label class="form-check-label" >E' poco sicura</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[2][reason][]" class="form-check-input"
+                                                    type="checkbox" value="4">
+                                                <label class="form-check-label" >Ha pochi servizi
+                                                    commerciali e di ristorazione</label>
+                                            </div>
+                                            <div class="form-check col-xs-6">
+                                                <input name="stations[2][reason][]" class="form-check-input"
+                                                    type="checkbox" value="5">
+                                                <label class="form-check-label" >E' difficile/costoso
+                                                    parcheggiare</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input id="station3-other-choice" onclick="handleClickCheckbox(this)" name="stations[2][reason][]" class="form-check-input"
+                                                    type="checkbox" value="6">
+                                                <label class="form-check-label" >Altro</label>
+                                            </div>
+                                            <!-- <select onchange="handleChangeSelection(this)" id="station3-reason-input"
                                                 name="stations[2][reason]" class="form-control form-control-sm">
                                                 <option selected value=""></option>
                                                 <option value="never thought">Non c'ho mai
@@ -399,7 +517,7 @@
                                                 <option value="expensive parking">E' difficile/costoso
                                                     parcheggiare</option>
                                                 <option value="other">Altro</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                     </div>
                                     <div class="row" style="display: none" id="station-3-hidden">
@@ -436,6 +554,27 @@
                         break;
                     case "station3-no-radio":
                         $('#station-3-div').css('display', 'block');
+                        break;
+                        case "station1-other-choice":
+                        if (element.checked) {
+                            $('#station-1-hidden').css('display', 'block');
+                        } else {
+                            $('#station-1-hidden').css('display', 'none');
+                        }
+                        break;
+                        case "station2-other-choice":
+                        if (element.checked) {
+                            $('#station-2-hidden').css('display', 'block');
+                        } else {
+                            $('#station-2-hidden').css('display', 'none');
+                        }
+                        break;
+                    case "station3-other-choice":
+                        if (element.checked) {
+                            $('#station-3-hidden').css('display', 'block');
+                        } else {
+                            $('#station-3-hidden').css('display', 'none');
+                        }
                         break;
                 }
             }
